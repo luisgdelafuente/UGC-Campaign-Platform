@@ -4,39 +4,39 @@ import { Logo } from './Logo';
 
 const columns = [
 {
-  title: 'Platform',
+  title: 'Servicio',
   links: [
-  { label: 'Campaign briefs', to: '/#platform' },
-  { label: 'Creator matching', to: '/#platform' },
-  { label: 'Rights & compliance', to: '/#platform' },
-  { label: 'Performance intelligence', to: '/#platform' }]
+  { label: 'Cómo funciona', to: '/#how-it-works' },
+  { label: 'Solución gestionada', to: '/#platform' },
+  { label: 'Contratos y pagos', to: '/#platform' },
+  { label: 'Medición', to: '/#platform' }]
 
 },
 {
-  title: 'Who it is for',
+  title: 'Para quién',
   links: [
-  { label: 'Brands', to: '/#audiences' },
-  { label: 'Creators', to: '/#audiences' },
-  { label: 'Agencies', to: '/#audiences' },
-  { label: 'Pricing', to: '/#pricing' }]
+  { label: 'Marcas', to: '/#audiences' },
+  { label: 'Agencias', to: '/#audiences' },
+  { label: 'Creadores', to: '/#audiences' },
+  { label: 'Precios', to: '/#pricing' }]
 
 },
 {
-  title: 'Company',
+  title: 'Locals',
   links: [
-  { label: 'About us', to: '/about' },
-  { label: 'Case studies', to: '/case-studies' },
+  { label: 'Nosotros', to: '/about' },
+  { label: 'Casos', to: '/case-studies' },
   { label: 'Blog', to: '/blog' },
-  { label: 'Careers', to: '/about' }]
+  { label: 'Contactar', to: '/#demo' }]
 
 },
 {
-  title: 'Resources',
+  title: 'Recursos',
   links: [
-  { label: 'UGC benchmark report', to: '/blog' },
-  { label: 'Creative research', to: '/blog/ugc-hooks-that-hold' },
-  { label: 'Brief templates', to: '/blog' },
-  { label: 'Help centre', to: '/blog' }]
+  { label: 'Creadores y CPL', to: '/blog/creador-especializado-leads-mas-baratos' },
+  { label: 'IA y campañas', to: '/blog/ia-para-lanzar-campanas-con-creadores' },
+  { label: 'UGC en B2B', to: '/blog/ugc-para-b2b-y-servicios' },
+  { label: 'Todo el blog', to: '/blog' }]
 
 }];
 
@@ -49,7 +49,8 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Logo />
             <p className="mt-4 max-w-[220px] text-[13.5px] leading-relaxed text-subtle">
-              The operating system for user-generated content campaigns.
+              Campañas con creadores de tu sector, gestionadas de principio a
+              fin. España y LATAM.
             </p>
           </div>
           {columns.map((column) =>
@@ -75,10 +76,11 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-4 border-t border-hairline pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[12.5px] text-faint">
-            © {new Date().getFullYear()} UGCFlow. All rights reserved.
+            © {new Date().getFullYear()} Locals Club. Todos los derechos
+            reservados.
           </p>
           <div className="flex gap-6">
-            {['Privacy', 'Terms', 'Creator agreement'].map((link) =>
+            {['Privacidad', 'Términos', 'Política de cookies'].map((link) =>
             <Link
               key={link}
               to="/"

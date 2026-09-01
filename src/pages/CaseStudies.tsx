@@ -14,13 +14,13 @@ export function CaseStudies() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Case studies"
-        title="Campaigns, the creative they produced, and what it returned"
-        lede="Three programmes running on the platform today. Each one shows the brief, the assets that came out of it and the numbers the media team reported.">
+        eyebrow="Casos"
+        title="Campañas medidas por lo que pasa fuera de la pantalla"
+        lede="Tres campañas gestionadas de principio a fin. En cada una verás el problema, lo que ejecutamos, el contenido que salió y los números que reportó el negocio.">
         
         <div className="mt-7">
           <Button to="/#demo" size="md">
-            Book a demo
+            Cuéntanos tu negocio
           </Button>
         </div>
       </PageHero>
@@ -28,7 +28,7 @@ export function CaseStudies() {
       <Section className="pb-24 pt-12 lg:pb-28">
         <div
           role="tablist"
-          aria-label="Select a case study"
+          aria-label="Elegir un caso"
           className="flex flex-wrap gap-2 border-b border-hairline pb-6">
           
           {caseStudyList.map((item) =>
@@ -92,16 +92,16 @@ export function CaseStudies() {
             </div>
             <img
               src={study.cover}
-              alt={`${study.brand} campaign imagery`}
+              alt={`Imagen de la campaña de ${study.brand}`}
               className="h-72 w-full rounded-3xl object-cover lg:h-full" />
             
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-10 border-t border-hairline pt-10 md:grid-cols-3">
             {[
-            { label: 'The problem', text: study.challenge },
-            { label: 'What we ran', text: study.approach },
-            { label: 'Where it landed', text: study.outcome }].
+            { label: 'El problema', text: study.challenge },
+            { label: 'Lo que ejecutamos', text: study.approach },
+            { label: 'Dónde acabó', text: study.outcome }].
             map((block) =>
             <div key={block.label}>
                 <h3 className="text-[11px] font-bold uppercase tracking-[0.08em] text-accent">
@@ -117,10 +117,10 @@ export function CaseStudies() {
           <div className="mt-16">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h3 className="text-[20px] font-bold tracking-[-0.02em] text-ink">
-                Assets from this campaign
+                Contenido de esta campaña
               </h3>
               <p className="text-[13px] text-subtle">
-                Muted previews · tap to play
+                Vista previa sin sonido · toca para reproducir
               </p>
             </div>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:max-w-3xl">

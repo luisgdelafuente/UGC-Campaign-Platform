@@ -56,12 +56,12 @@ export function Header() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <Link
-            to="/"
+            to="/#pricing"
             className="text-[13.5px] font-medium text-body transition-colors duration-150 ease-out hover:text-ink">
             
-            Log in
+            Precios
           </Link>
-          <Button to="/#demo">Book a demo</Button>
+          <Button to="/#demo">Contactar</Button>
         </div>
 
         <button
@@ -120,16 +120,20 @@ export function Header() {
 
               <div className="mt-7 flex flex-col gap-3">
                 <Button to="/#demo" size="md" className="w-full">
-                  Book a demo
+                  Contactar
                 </Button>
-                <Button to="/" variant="secondary" size="md" className="w-full">
-                  Log in
+                <Button
+                to="/#pricing"
+                variant="secondary"
+                size="md"
+                className="w-full">
+                
+                  Precios
                 </Button>
               </div>
 
               <p className="mt-6 text-[13px] leading-relaxed text-subtle">
-                18,000+ vetted creators · 43 markets · strategists on every
-                account.
+                +500 creadores en la red · España y LATAM · activación en 48h.
               </p>
             </motion.div>
           </>

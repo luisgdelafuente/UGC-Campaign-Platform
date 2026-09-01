@@ -16,14 +16,14 @@ export function BlogPost() {
       <SiteLayout>
         <Section className="py-32 text-center">
           <h1 className="text-[28px] font-extrabold tracking-display text-ink">
-            That article has moved
+            Ese artículo ya no está aquí
           </h1>
           <p className="mx-auto mt-4 max-w-md text-[15px] text-muted">
-            The piece you are looking for is no longer published here.
+            La pieza que buscas ya no está publicada en esta dirección.
           </p>
           <div className="mt-8 flex justify-center">
             <Button to="/blog" size="md">
-              Back to the blog
+              Volver al blog
             </Button>
           </div>
         </Section>
@@ -42,7 +42,7 @@ export function BlogPost() {
             className="inline-flex items-center gap-2 text-[13px] font-semibold text-subtle transition-colors duration-150 ease-out hover:text-ink">
             
             <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
-            All articles
+            Todos los artículos
           </Link>
           <p className="mt-8 text-[12.5px] font-semibold text-accent">
             {post.category}
@@ -94,18 +94,18 @@ export function BlogPost() {
               {post.clip &&
               <>
                   <h2 className="text-[11px] font-bold uppercase tracking-[0.08em] text-faint">
-                    Example asset
+                    Pieza de ejemplo
                   </h2>
                   <VideoTile clip={post.clip} className="mt-4" />
                 </>
               }
               <div className="mt-8 rounded-2xl border border-hairline bg-surface p-6">
                 <p className="text-[14.5px] leading-relaxed text-muted">
-                  Want this applied to your next campaign? A strategist will
-                  build your brief live on the call.
+                  ¿Quieres aplicarlo a tu próxima campaña? Te preparamos un plan
+                  a medida, gratis y sin compromiso.
                 </p>
                 <Button to="/#demo" size="md" className="mt-5 w-full">
-                  Book a demo
+                  Quiero mi plan
                 </Button>
               </div>
             </aside>
@@ -115,7 +115,7 @@ export function BlogPost() {
 
       <Section className="border-t border-hairline bg-surface py-16">
         <h2 className="text-[13px] font-bold uppercase tracking-[0.08em] text-faint">
-          Keep reading
+          Seguir leyendo
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           {others.map((item) =>

@@ -14,8 +14,8 @@ export function Blog() {
     <SiteLayout>
       <PageHero
         eyebrow="Blog"
-        title="What 2.1 million delivered assets keep teaching us"
-        lede="Creative research, operating models and rights guidance from the strategists running campaigns on the platform every week." />
+        title="Lo que aprendemos campaña tras campaña"
+        lede="Criterio sobre creadores, sectores y medición, escrito por el equipo que ejecuta las campañas cada semana." />
       
 
       <Section className="py-16 lg:py-20">
@@ -52,7 +52,7 @@ export function Blog() {
               to={`/blog/${featured.slug}`}
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
               
-              Read the research
+              Leer el artículo
               <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -76,7 +76,7 @@ export function Blog() {
 
       <Section className="border-t border-hairline bg-surface py-20">
         <h2 className="text-[13px] font-bold uppercase tracking-[0.08em] text-faint">
-          More from the team
+          Más del equipo
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           {rest.map((post) =>

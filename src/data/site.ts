@@ -1,25 +1,25 @@
 export const navLinks = [
-{ label: 'Platform', to: '/#platform' },
-{ label: 'Who it is for', to: '/#audiences' },
-{ label: 'Case Studies', to: '/case-studies' },
-{ label: 'Blog', to: '/blog' },
-{ label: 'About', to: '/about' },
-{ label: 'Pricing', to: '/#pricing' }];
+{ label: 'Marcas', to: '/#audiences' },
+{ label: 'Agencias', to: '/#audiences' },
+{ label: 'Creadores', to: '/#audiences' },
+{ label: 'Casos', to: '/case-studies' },
+{ label: 'Nosotros', to: '/about' },
+{ label: 'Blog', to: '/blog' }];
 
 
 export const partnerLogos = [
-'NORTHWIND',
-'Glowbrand',
-'Moveline',
-'STUDIO/11',
-'Verdant'];
+'SWISS BUTTER',
+'Harper & Bone',
+'TEMU',
+'CASA CARMEN',
+'Nordia'];
 
 
 export const matchedCreators = [
-{ name: 'Maya R.', niche: 'Beauty & Skincare', score: 98, tone: '#C4B5FD' },
-{ name: 'Jordan K.', niche: 'Lifestyle', score: 95, tone: '#A78BFA' },
-{ name: 'Ade O.', niche: 'Fitness & Wellness', score: 93, tone: '#8B5CF6' },
-{ name: 'Priya S.', niche: 'Skincare', score: 91, tone: '#5B2BFF' }];
+{ name: 'Antonella C.', niche: 'Gastronomía · Madrid', score: 98, tone: '#4FC3E8' },
+{ name: 'Iara S.', niche: 'Lifestyle · Madrid', score: 95, tone: '#7FD6F0' },
+{ name: 'Martina F.', niche: 'Retail y moda', score: 93, tone: '#26A9D8' },
+{ name: 'Guille R.', niche: 'Food reviews', score: 91, tone: '#0A7FA6' }];
 
 
 export type AudienceKey = 'brands' | 'creators' | 'agencies';
@@ -37,72 +37,72 @@ export interface Audience {
 export const audiences: Audience[] = [
 {
   key: 'brands',
-  tab: 'For Brands',
-  headline: 'Ship a month of creative in a week',
+  tab: 'Marcas',
+  headline: 'Nos cuentas el objetivo, ejecutamos la campaña entera',
   description:
-  'Write one brief, get matched with vetted creators who already perform in your category, and approve everything in a single review queue.',
+  'Visitas, reservas, registros o ventas. Buscamos a los creadores de tu sector, negociamos, producimos y medimos lo que pasa fuera de la pantalla.',
   bullets: [
   {
-    title: 'Category-trained matching',
-    text: 'Ranked shortlists built from performance history, not follower counts.'
+    title: 'Creadores de tu sector',
+    text: 'Perfiles que ya conocen el producto y hablan el idioma de tu categoría.'
   },
   {
-    title: 'One review queue',
-    text: 'Scripts, cuts and revisions approved in-platform with full version history.'
+    title: 'Un responsable por campaña',
+    text: 'Una persona que valida cada pieza, supervisa los tiempos y te responde.'
   },
   {
-    title: 'Usage rights handled',
-    text: 'Licensing, whitelisting and paid usage terms signed before the first shoot.'
+    title: 'Todo en un sistema',
+    text: 'Brief, contrato, revisiones, publicación y medición sin salir de la plataforma.'
   }],
 
-  cta: 'See the brand workflow',
-  metric: { value: '11 days', label: 'average brief-to-asset turnaround' }
+  cta: 'Ver cómo trabajamos con marcas',
+  metric: { value: '48h', label: 'para activar la primera campaña' }
 },
 {
   key: 'creators',
-  tab: 'For Creators',
-  headline: 'Real briefs, clear rates, paid on time',
+  tab: 'Creadores',
+  headline: 'Marcas que te interesan, condiciones claras y pago seguro',
   description:
-  'Get matched to campaigns that fit what you actually make. Rates and usage are visible before you apply, and payouts clear within 72 hours of approval.',
+  'Briefs concretos, libertad creativa real y un equipo que responde. Sabes qué se pide, cuánto se paga y cuándo cobras antes de aceptar.',
   bullets: [
   {
-    title: 'No pitching into the void',
-    text: 'Briefs come to you with budget, deliverables and usage stated upfront.'
+    title: 'Sin perseguir marcas',
+    text: 'Te llegan propuestas de tu sector con briefing, fechas y caché por delante.'
   },
   {
-    title: 'Feedback in one place',
-    text: 'One thread per deliverable, so revisions never arrive by scattered DM.'
+    title: 'Libertad para crear',
+    text: 'Se cuida tu estilo: el brief marca el mensaje, no la forma de contarlo.'
   },
   {
-    title: '72-hour payouts',
-    text: 'Automatic invoicing and escrowed budgets in 40+ currencies.'
+    title: 'Pago retenido',
+    text: 'El presupuesto queda bloqueado antes de grabar y se libera al publicar.'
   }],
 
-  cta: 'Join the creator network',
-  metric: { value: '72 hours', label: 'average time to payout' }
+  cta: 'Unirme a la red de creadores',
+  metric: { value: '+500', label: 'creadores activos en la red' }
 },
 {
   key: 'agencies',
-  tab: 'For Agencies',
-  headline: 'Run every client from one control room',
+  tab: 'Agencias',
+  headline: 'Ofrece UGC sin montar un departamento',
   description:
-  'Multi-client workspaces, white-label reporting and pooled creator rosters — so you scale output without scaling headcount.',
+  'Operación en marca blanca bajo tu marca. Tú mantienes la relación y la estrategia; nosotros ponemos la red, la producción y el reporting.',
   bullets: [
   {
-    title: 'Multi-client workspaces',
-    text: 'Separate budgets, brand rules and rosters under a single agency login.'
+    title: 'Marca blanca',
+    text: 'Entregables y reporting con tu identidad. El cliente sigue siendo tuyo.'
   },
   {
-    title: 'White-label reporting',
-    text: 'Client-ready performance decks generated from live campaign data.'
+    title: 'Varios clientes a la vez',
+    text: 'Espacios separados por cuenta, con presupuestos y rosters independientes.'
   },
   {
-    title: 'Margin protection',
-    text: 'Cost, markup and profitability visible on every campaign line.'
+    title: 'Margen controlado',
+    text: 'Coste, markup y rentabilidad visibles en cada línea de campaña.'
   }],
 
-  cta: 'See the agency workspace',
-  metric: { value: '4.6x', label: 'output per account manager' }
+  cta: 'Ver el modelo para agencias',
+  metric: { value: '+200', label: 'campañas producidas con partners' }
 }];
 
 
@@ -110,104 +110,104 @@ export const workflowSteps = [
 {
   step: '01',
   title: 'Brief',
-  text: 'Describe the campaign once. Objectives, platforms, budget and usage rights are turned into a structured brief creators can actually act on.',
-  detail: 'Average 6 minutes to publish'
+  text: 'Nos cuentas el negocio y el objetivo. Lo convertimos en un brief accionable con mensaje, formatos, fechas y presupuesto cerrado.',
+  detail: 'Plan a medida en 48 horas'
 },
 {
   step: '02',
-  title: 'Match',
-  text: 'Our matching model ranks the network on category performance, audience overlap and past delivery reliability — not vanity metrics.',
-  detail: '18,000+ vetted creators scored'
+  title: 'Selección',
+  text: 'La IA propone perfiles de tu sector por encaje de audiencia y entrega previa. El equipo decide, negocia y cierra condiciones.',
+  detail: '+500 creadores en la red'
 },
 {
   step: '03',
-  title: 'Produce',
-  text: 'Scripts, shoots, revisions and approvals run in one thread with version history, so nothing lives in a spreadsheet or a DM.',
-  detail: '2 revision rounds included'
+  title: 'Producción',
+  text: 'Contrato, guion, revisiones y publicación en un solo hilo. Un responsable valida cada pieza antes de que salga.',
+  detail: 'Pago retenido hasta publicar'
 },
 {
   step: '04',
-  title: 'Measure',
-  text: 'Every asset carries a tracked ID, so spend, ROAS and creative-level performance feed straight back into the next brief.',
-  detail: 'Connected to Meta, TikTok & GA4'
+  title: 'Medición',
+  text: 'Medimos lo que pasa fuera de la pantalla: visitas, reservas, registros y ventas. El resultado alimenta la siguiente campaña.',
+  detail: 'Orgánico + amplificación paid'
 }];
 
 
 export const platformFeatures = {
   primary: {
-    title: 'Matching model trained on 2.1M delivered assets',
-    text: 'Every brief is scored against real delivery history — completion rates, revision counts and paid performance by category and market. Shortlists arrive ranked, with the reasoning shown, so your team makes the call instead of the algorithm making it quietly.',
+    title: 'IA que propone, personas que deciden',
+    text: 'El autoservicio es la categoría; el servicio gestionado es la diferencia. La tecnología rastrea la red, puntúa el encaje por sector y adelanta el trabajo pesado. La decisión de a quién activar, con qué mensaje y en qué momento la toma un responsable que conoce tu campaña.',
     points: [
-    'Category and market-level performance signals',
-    'Brand-safety and past-collaboration screening',
-    'Explainable scores your client can read']
+    'Encaje por sector y mercado, no por número de seguidores',
+    'Historial de entrega y fiabilidad de cada creador',
+    'Una persona responsable que valida y responde']
 
   },
   secondary: [
   {
-    title: 'Rights and compliance built in',
-    text: 'Usage windows, whitelisting and disclosure requirements are attached to the asset itself and enforced at export.'
+    title: 'Contratos y pago retenido',
+    text: 'Cesión de derechos, usos y plazos firmados antes de grabar. El presupuesto queda retenido y se libera al publicar.'
   },
   {
-    title: 'Creative performance intelligence',
-    text: 'Hook, format and length broken out per asset, so the next brief starts from evidence rather than instinct.'
+    title: 'Resultados, no métricas de vanidad',
+    text: 'Reservas, visitas físicas, registros y ventas atribuidas. Las views son el medio, nunca el informe final.'
   }]
 
 };
 
 export const caseStudies = {
   featured: {
-    brand: 'Glowbrand',
-    sector: 'Skincare · DTC',
-    title: 'From 12 assets a quarter to 140 a month',
-    text: 'Glowbrand replaced a three-agency creative chain with a single always-on UGC pipeline, cutting cost per asset by 61% while lifting paid social ROAS across every market.',
+    brand: 'Swiss Butter',
+    sector: 'Hostelería · Madrid',
+    title: 'Fila todas las noches con una campaña 100% orgánica',
+    text: 'Una apertura sostenida durante semanas con creadores gastronómicos de la ciudad: contenido diario, un evento con 150 creadores y cero inversión en paid.',
     image: "/610758d7-afc6-465b-b0cb-ad07cf2cf1a7.jpg",
 
     stats: [
-    { value: '3.1x', label: 'paid social ROAS' },
-    { value: '-61%', label: 'cost per asset' },
-    { value: '140', label: 'assets per month' }]
+    { value: '+1M', label: 'views orgánicas' },
+    { value: '+200', label: 'piezas de contenido' },
+    { value: '150', label: 'creadores en un evento' }]
 
   },
   supporting: [
   {
-    brand: 'Moveline',
-    sector: 'Fitness apps',
-    title: 'Nine markets launched from one brief',
-    stat: '9 markets',
-    statLabel: 'launched in 5 weeks'
+    brand: 'Harper & Bone',
+    sector: 'Retail · Barcelona y Madrid',
+    title: '+250.000 personas impactadas en 15 días',
+    stat: '+150',
+    statLabel: 'UGCs producidos'
   },
   {
-    brand: 'STUDIO/11',
-    sector: 'Independent agency',
-    title: 'Doubled client output without new hires',
-    stat: '2.0x',
-    statLabel: 'output per account manager'
+    brand: 'TEMU',
+    sector: 'Ecommerce · España y Argentina',
+    title: 'Gestión de UGC a escala en dos países a la vez',
+    stat: '+50',
+    statLabel: 'creadores recurrentes al mes'
   }]
 
 };
 
 export const expertiseStats = [
-{ value: '9 years', label: 'running creator campaigns' },
-{ value: '2.1M', label: 'assets delivered to date' },
-{ value: '43', label: 'markets covered' },
-{ value: '400+', label: 'brands and agencies' }];
+{ value: '+500', label: 'creadores en la red' },
+{ value: '+200', label: 'campañas producidas' },
+{ value: '48h', label: 'para activar una campaña' },
+{ value: '2', label: 'mercados: España y LATAM' }];
 
 
 export const testimonials = [
 {
   quote:
-  'We stopped treating UGC as a side channel. It is now the majority of our paid creative, and it is the only part of the funnel where cost per asset goes down while performance goes up.',
-  name: 'Elena Marchetti',
-  role: 'VP Growth, Glowbrand',
+  'La comunicación es rápida y clara, entienden nuestro estilo y dan libertad para crear de forma natural. Muy organizados con los briefings y los tiempos: se trabaja con tranquilidad.',
+  name: 'Antonella C.',
+  role: 'Creadora · @antonellacomino',
   avatar: "/7c7651b3-573f-41a4-a637-7bfaffce56e1.jpg"
 
 },
 {
   quote:
-  'The reporting is the part clients notice. We hand over a live view instead of a monthly deck, and renewals stopped being a conversation about proof.',
-  name: 'Tomas Herrera',
-  role: 'Managing Partner, STUDIO/11',
+  'Contratamos una campaña y recibimos una operación completa. El cliente ve reservas, nosotros mantenemos la relación y la estrategia. Es la parte que antes no podíamos ofrecer.',
+  name: 'Tomás Herrera',
+  role: 'Socio director, agencia partner',
   avatar: "/f85a11ee-9d16-4b8e-8b2e-1c3da04bb733.jpg"
 
 }];
@@ -215,69 +215,69 @@ export const testimonials = [
 
 export const pricingTiers = [
 {
-  name: 'Launch',
-  price: '€1,200',
-  cadence: 'per month',
-  text: 'For brands testing UGC as a paid social channel.',
+  name: 'Piloto',
+  price: '1.500 €',
+  cadence: 'pago único',
+  text: 'Un lanzamiento, una apertura o una acción con fecha.',
   features: [
-  'Up to 20 assets per month',
-  '1 brand workspace',
-  'Standard usage rights',
-  'Email support'],
+  'Restauración y producto',
+  'Hasta 50 creadores',
+  'Duración de 6 semanas',
+  'Contrato y pago retenido incluidos'],
 
-  cta: 'Start with Launch',
+  cta: 'Empezar con el piloto',
   featured: false
 },
 {
-  name: 'Scale',
-  price: '€3,800',
-  cadence: 'per month',
-  text: 'For teams running always-on campaigns across markets.',
+  name: 'Campaña',
+  price: '2.500 €',
+  cadence: 'al mes',
+  text: 'Contenido cada mes y presencia sostenida, no un pico y a otra cosa.',
   features: [
-  'Up to 120 assets per month',
-  'Unlimited briefs and workspaces',
-  'Paid usage and whitelisting',
-  'Performance intelligence suite',
-  'Dedicated campaign strategist'],
+  'Restauración y producto',
+  'Hasta 50 creadores al mes',
+  'Permanencia de 3 meses',
+  'Responsable de campaña asignado',
+  'Informe mensual de resultados'],
 
-  cta: 'Book a demo',
+  cta: 'Quiero mi plan',
   featured: true
 },
 {
-  name: 'Agency',
-  price: 'Custom',
-  cadence: 'annual',
-  text: 'For agencies managing UGC for multiple clients.',
+  name: 'A medida',
+  price: 'Según necesidad',
+  cadence: 'presupuesto cerrado',
+  text: 'Multi-ciudad, varios mercados o un brief que no entra en un pack.',
   features: [
-  'Unlimited client workspaces',
-  'White-label reporting',
-  'Margin and cost controls',
-  'API and SSO',
-  'Named account team'],
+  'Cualquier sector',
+  'Los creadores que pida el objetivo',
+  'La duración que pida la campaña',
+  'Amplificación con paid',
+  'Operación en marca blanca'],
 
-  cta: 'Talk to sales',
+  cta: 'Hablar con el equipo',
   featured: false
 }];
 
 
 export const faqs = [
 {
-  q: 'How are creators vetted?',
-  a: 'Every creator completes an identity check, a craft review of past deliverables and a brand-safety screen before joining. After that, their score is maintained by real delivery data: on-time rates, revision counts and paid performance by category.'
+  q: '¿Qué es exactamente Locals Club?',
+  a: 'Una solución gestionada de campañas con creadores en España y LATAM. No es un marketplace donde buscas perfiles ni una base de datos de influencers: nos cuentas qué quieres conseguir y nos ocupamos del brief, la selección, la negociación, el feedback, la publicación y la medición.'
 },
 {
-  q: 'Who owns the content we commission?',
-  a: 'You do. Usage terms — duration, territories, whitelisting and paid amplification — are agreed inside the brief before production starts and travel with the asset in the library, so nothing is ever exported without valid rights.'
+  q: '¿Qué diferencia hay entre un creador y un influencer?',
+  a: 'El influencer vende alcance; el creador vende contenido. Trabajamos con gente que conoce tu sector y produce piezas que funcionan tanto en su perfil como en tus anuncios, aunque su audiencia sea pequeña.'
 },
 {
-  q: 'Can we bring our own creators?',
-  a: 'Yes. Existing creator relationships can be invited into your workspace and run through the same briefing, approval, rights and payout flows as matched creators, at no extra platform cost.'
+  q: '¿Cuánto cuesta una campaña?',
+  a: 'Hay tres planes con precio cerrado: un piloto puntual desde 1.500 €, continuidad mensual desde 2.500 € al mes y campañas a medida. Los precios no incluyen IVA y la inversión en paid (Meta, TikTok) nunca va incluida.'
 },
 {
-  q: 'How does this fit alongside our agency?',
-  a: 'Most brands keep their agency and give them an agency workspace. The agency briefs and reviews, the brand approves budget and rights, and both sides read the same performance data.'
+  q: '¿Qué resultados puedo esperar?',
+  a: 'Medimos lo que ocurre fuera de la pantalla: visitas al local, reservas, registros o ventas. Antes de empezar acordamos el indicador principal y el volumen esperado de piezas y creadores.'
 },
 {
-  q: 'What does onboarding look like?',
-  a: 'A strategist runs your first campaign with you end to end — usually live within 10 working days, including workspace setup, brand rules, integrations and the first matched roster.'
+  q: '¿En qué mercados trabajáis?',
+  a: 'España y LATAM, con campañas simultáneas en varios países. El eje es sectorial más que geográfico: hostelería, retail, fintech, industrial y automoción.'
 }];

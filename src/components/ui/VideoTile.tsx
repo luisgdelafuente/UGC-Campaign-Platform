@@ -42,7 +42,7 @@ export function VideoTile({ clip, className = '', showMetric = true }: VideoTile
       <button
         type="button"
         onClick={toggle}
-        aria-label={`${playing ? 'Pause' : 'Play'} ${clip.creator} clip`}
+        aria-label={`${playing ? 'Pausar' : 'Reproducir'} el vídeo de ${clip.creator}`}
         className="absolute inset-0 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white">
         
         <span
@@ -65,7 +65,7 @@ export function VideoTile({ clip, className = '', showMetric = true }: VideoTile
       </span>
 
       {showMetric &&
-      <span className="pointer-events-none absolute right-3 top-3 rounded-full bg-accent px-2.5 py-1 text-[10.5px] font-bold text-white">
+      <span className="pointer-events-none absolute right-3 top-3 rounded-full bg-accent-bright px-2.5 py-1 text-[10.5px] font-bold text-ink">
           {clip.metric} {clip.metricLabel}
         </span>
       }

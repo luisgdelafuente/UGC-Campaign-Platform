@@ -14,17 +14,17 @@ export function ContentWall() {
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>Live from the network</Eyebrow>
+          <Eyebrow>Contenido de la red</Eyebrow>
           <h2
             id="content-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            The work itself, and what it returned
+            El trabajo real, y lo que pasó fuera de la pantalla
           </h2>
         </div>
         <p className="max-w-sm text-[14.5px] leading-relaxed text-muted">
-          A sample of assets delivered this month. Every clip carries a tracked
-          ID, so the number on it is the number the media team reported.
+          Una muestra de piezas producidas este mes. El dato de cada clip es el
+          que reportó el negocio, no una métrica de vanidad.
         </p>
       </div>
 
@@ -40,14 +40,14 @@ export function ContentWall() {
 
       <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-hairline pt-8">
         <p className="text-[14.5px] text-muted">
-          <strong className="font-bold text-ink">2.1M assets</strong> delivered
-          across 43 markets since 2017.
+          <strong className="font-bold text-ink">+200 campañas</strong>{' '}
+          producidas en España y LATAM desde 2019.
         </p>
         <Link
           to="/case-studies"
           className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
           
-          See the campaigns behind them
+          Ver las campañas detrás
           <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>

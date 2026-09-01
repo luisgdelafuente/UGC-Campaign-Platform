@@ -9,12 +9,12 @@ export function Platform() {
   return (
     <Section id="platform" labelledBy="platform-heading" className="py-24 lg:py-28">
       <div className="max-w-2xl">
-        <Eyebrow>The technology</Eyebrow>
+        <Eyebrow>Qué es Locals Club</Eyebrow>
         <h2
           id="platform-heading"
           className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
           
-          Matching that can explain itself
+          Solución gestionada, no autoservicio
         </h2>
       </div>
 

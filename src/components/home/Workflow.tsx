@@ -10,12 +10,12 @@ export function Workflow() {
       className="border-y border-hairline bg-surface py-24 lg:py-28">
       
       <div className="max-w-2xl">
-        <Eyebrow>How it runs</Eyebrow>
+        <Eyebrow>Cómo funciona</Eyebrow>
         <h2
           id="workflow-heading"
           className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
           
-          Brief to measured asset, without leaving the platform
+          Del brief al resultado medido, sin salir del sistema
         </h2>
       </div>
 

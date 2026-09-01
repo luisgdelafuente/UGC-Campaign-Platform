@@ -12,17 +12,17 @@ export function Audiences() {
     <Section id="audiences" labelledBy="audiences-heading" className="py-24 lg:py-28">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>One network, three sides</Eyebrow>
+          <Eyebrow>Una red, tres partes</Eyebrow>
           <h2
             id="audiences-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            The whole UGC chain, working in the same place
+            Marcas, agencias y creadores en el mismo sistema
           </h2>
         </div>
         <p className="max-w-md text-[15.5px] leading-relaxed text-muted">
-          Brands, creators and agencies each get their own workspace — but they
-          brief, review and get paid against one shared source of truth.
+          Cada parte trabaja en su propio espacio, pero el brief, las revisiones
+          y los pagos ocurren sobre la misma información.
         </p>
       </div>
 
@@ -103,7 +103,7 @@ export function Audiences() {
 
           <div className="flex flex-col justify-between bg-wash p-8 lg:p-10">
             <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-faint">
-              What changes
+              Lo que cambia
             </p>
             <div className="mt-10">
               <p className="text-[44px] font-extrabold leading-none tracking-display text-ink">

@@ -11,15 +11,15 @@ export function Faq() {
     <Section id="faq" labelledBy="faq-heading" className="py-24 lg:py-28">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20">
         <div>
-          <Eyebrow>Questions</Eyebrow>
+          <Eyebrow>Preguntas frecuentes</Eyebrow>
           <h2
             id="faq-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink">
             
-            Before you book
+            Lo que nos preguntan antes de empezar
           </h2>
           <p className="mt-4 max-w-xs text-[14.5px] leading-relaxed text-muted">
-            Anything else, a strategist will answer live on the demo call.
+            Cualquier otra duda te la resolvemos en la primera llamada.
           </p>
         </div>
 

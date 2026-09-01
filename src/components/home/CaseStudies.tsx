@@ -15,19 +15,19 @@ export function CaseStudies() {
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>Proof, not promises</Eyebrow>
+          <Eyebrow>Casos</Eyebrow>
           <h2
             id="cases-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            What changes when UGC stops being ad hoc
+            Campañas medidas por lo que pasa fuera de la pantalla
           </h2>
         </div>
         <Link
           to="/case-studies"
           className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
           
-          All case studies
+          Ver todos los casos
           <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
@@ -35,7 +35,7 @@ export function CaseStudies() {
       <article className="mt-12 grid grid-cols-1 overflow-hidden rounded-3xl border border-hairline lg:grid-cols-2">
         <img
           src={featured.image}
-          alt="Skincare product beside a phone playing a creator video"
+          alt="Producto junto a un móvil reproduciendo contenido de creador"
           className="h-64 w-full object-cover lg:h-full" />
         
         <div className="flex flex-col justify-between bg-canvas p-8 lg:p-12">

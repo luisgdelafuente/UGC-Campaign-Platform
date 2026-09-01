@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-type Variant = 'primary' | 'secondary' | 'ghost';
+type Variant = 'primary' | 'secondary' | 'ghost' | 'accent';
 type Size = 'sm' | 'md';
 
 interface ButtonProps {
@@ -16,18 +16,19 @@ interface ButtonProps {
 }
 
 const base =
-'inline-flex items-center justify-center gap-2 rounded-xl font-semibold tracking-[-0.01em] whitespace-nowrap transition-[background-color,color,border-color,box-shadow,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-px';
+'inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-[-0.01em] whitespace-nowrap transition-[background-color,color,border-color,box-shadow,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-px';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-accent text-white shadow-accent hover:bg-[#4a1fe0]',
+  primary: 'bg-ink text-white shadow-accent hover:bg-[#232320]',
   secondary:
-  'bg-surface text-ink border border-hairline hover:border-ink/25 hover:bg-wash',
-  ghost: 'text-body hover:text-ink'
+  'bg-surface text-ink border border-hairline hover:border-ink/30 hover:bg-wash',
+  ghost: 'text-body hover:text-ink',
+  accent: 'bg-accent-bright text-ink hover:bg-accent-500'
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'px-[18px] py-2.5 text-[13.5px]',
-  md: 'px-6 py-[13px] text-sm'
+  sm: 'px-5 py-2.5 text-[13.5px]',
+  md: 'px-7 py-[13px] text-sm'
 };
 
 export function Button({

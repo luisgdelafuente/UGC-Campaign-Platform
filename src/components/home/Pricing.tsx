@@ -15,17 +15,17 @@ export function Pricing() {
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>Pricing</Eyebrow>
+          <Eyebrow>Precios</Eyebrow>
           <h2
             id="pricing-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            Platform fee, no commission on creator budgets
+            Nuestra oferta para marcas
           </h2>
         </div>
         <p className="max-w-sm text-[14.5px] leading-relaxed text-muted">
-          Creator fees are paid in full to creators. We charge for the platform
-          and the strategists, nothing on top of the spend.
+          Tres planes con precio cerrado. Precios sin IVA; la inversión en paid
+          (Meta, TikTok) nunca está incluida.
         </p>
       </div>
 
@@ -48,8 +48,8 @@ export function Pricing() {
                 {tier.name}
               </h3>
               {tier.featured &&
-            <span className="rounded-full bg-accent px-2.5 py-1 text-[11px] font-semibold text-white">
-                  Most chosen
+            <span className="rounded-full bg-accent-bright px-2.5 py-1 text-[11px] font-semibold text-ink">
+                  El más elegido
                 </span>
             }
             </div>

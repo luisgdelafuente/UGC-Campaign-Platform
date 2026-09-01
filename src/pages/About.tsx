@@ -11,16 +11,16 @@ export function About() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="About us"
-        title="We ran the campaigns before we built the software"
-        lede="UGCFlow started as an in-house creator team, not a marketplace. Every rule in the platform came from a campaign we ran ourselves and had to fix.">
+        eyebrow="Nosotros"
+        title="Ejecutábamos las campañas antes de construir el sistema"
+        lede="Locals Club nació gestionando creadores a mano para negocios de barrio, no montando un marketplace. Cada regla del sistema viene de una campaña que tuvimos que resolver nosotros.">
         
         <div className="mt-7 flex flex-wrap gap-3">
           <Button to="/#demo" size="md">
-            Book a demo
+            Cuéntanos tu negocio
           </Button>
           <Button href="#story" variant="secondary" size="md">
-            Read our story
+            Leer nuestra historia
           </Button>
         </div>
       </PageHero>
@@ -32,8 +32,8 @@ export function About() {
           )}
         </div>
         <p className="mt-6 max-w-2xl text-[14.5px] leading-relaxed text-subtle">
-          A day of delivered work from the network. Nine years in, this is still
-          the only output that matters to us.
+          Un día de trabajo entregado por la red. Después de +200 campañas,
+          sigue siendo lo único que nos interesa enseñar.
         </p>
       </Section>
 
@@ -44,16 +44,16 @@ export function About() {
         
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20">
           <div>
-            <Eyebrow>Our story</Eyebrow>
+            <Eyebrow>Nuestra historia</Eyebrow>
             <h2
               id="story-heading"
               className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink">
               
-              Nine years, four turning points
+              Cuatro momentos que nos trajeron hasta aquí
             </h2>
             <img
               src="/de5242f3-4079-47cb-805a-c4a0daf6fe0d.jpg"
-              alt="The team reviewing creator videos together"
+              alt="El equipo revisando vídeos de creadores"
               className="mt-8 h-56 w-full rounded-3xl object-cover" />
             
           </div>
@@ -83,12 +83,12 @@ export function About() {
 
       <Section labelledBy="values-heading" className="py-24 lg:py-28">
         <div className="max-w-2xl">
-          <Eyebrow>How we work</Eyebrow>
+          <Eyebrow>Cómo trabajamos</Eyebrow>
           <h2
             id="values-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            Three positions we do not trade away
+            Tres cosas que no negociamos
           </h2>
         </div>
 
@@ -130,17 +130,16 @@ export function About() {
         className="border-t border-hairline bg-surface py-24 lg:py-28">
         
         <div className="max-w-2xl">
-          <Eyebrow>Who runs it</Eyebrow>
+          <Eyebrow>Quién está detrás</Eyebrow>
           <h2
             id="team-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            Strategists on every account
+            Un responsable humano en cada campaña
           </h2>
           <p className="mt-5 text-[15.5px] leading-relaxed text-muted">
-            Forty-one people across London, Berlin and Lisbon. Everyone on the
-            campaign side has run creator programmes in-house or agency-side
-            before joining.
+            Equipo entre Madrid, Barcelona y Buenos Aires. Todo el que gestiona
+            campañas ha trabajado antes con creadores en marca o en agencia.
           </p>
         </div>
 

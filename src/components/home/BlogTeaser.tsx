@@ -13,19 +13,19 @@ export function BlogTeaser() {
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>From the blog</Eyebrow>
+          <Eyebrow>Últimas noticias</Eyebrow>
           <h2
             id="blog-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            What the delivery data keeps teaching us
+            Lo último que hemos publicado
           </h2>
         </div>
         <Link
           to="/blog"
           className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
           
-          All articles
+          Ver todo el blog
           <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
