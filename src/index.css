@@ -1,0 +1,84 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #fafaf9;
+  color: #0b0b0f;
+  -webkit-font-smoothing: antialiased;
+}
+@keyframes mp-float-up {
+  0%,
+  100% {
+    transform: var(--mp-rot, none) translateY(0px);
+  }
+  50% {
+    transform: var(--mp-rot, none) translateY(-9px);
+  }
+}
+@keyframes mp-float-down {
+  0%,
+  100% {
+    transform: var(--mp-rot, none) translateY(0px);
+  }
+  50% {
+    transform: var(--mp-rot, none) translateY(9px);
+  }
+}
+@keyframes mp-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes mp-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  55% {
+    transform: translateX(140%);
+  }
+  100% {
+    transform: translateX(140%);
+  }
+}
+.mp-float-up {
+  animation: mp-float-up 7s ease-in-out infinite;
+}
+.mp-float-down {
+  animation: mp-float-down 7s ease-in-out infinite;
+}
+.mp-pulse-dot {
+  animation: mp-pulse-dot 1.8s ease-in-out infinite;
+}
+.mp-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateX(-100%);
+  animation: mp-shimmer 2.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .mp-float-up,
+  .mp-float-down,
+  .mp-pulse-dot,
+  .mp-shimmer::after {
+    animation: none !important;
+  }
+}
