@@ -4,21 +4,22 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { MenuIcon, XIcon } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Logo } from './Logo';
-import { navLinks } from '../../data/site';
+import { LanguageSelector } from './LanguageSelector';
+import { ThemeToggle } from './ThemeToggle';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const { pathname, hash } = useLocation();
+  const { t } = useLanguage();
 
   const isActive = (to: string) =>
   to.startsWith('/#') ? false : pathname.startsWith(to);
 
-  // Close on route change
   useEffect(() => {
     setOpen(false);
   }, [pathname, hash]);
 
-  // Close on Escape, lock body scroll while open
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -34,12 +35,12 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-hairline bg-surface/90 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full border-b border-hairline bg-surface supports-[backdrop-filter]:bg-surface/90 supports-[backdrop-filter]:backdrop-blur-md">
       <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between px-6 lg:px-12">
         <div className="flex items-center gap-10">
           <Logo />
           <nav aria-label="Main" className="hidden items-center gap-6 lg:flex">
-            {navLinks.map((link) =>
+            {t.nav.map((link) =>
             <Link
               key={link.label}
               to={link.to}
@@ -54,30 +55,35 @@ export function Header() {
           </nav>
         </div>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
+          <LanguageSelector />
+          <ThemeToggle />
           <Link
             to="/#pricing"
-            className="text-[13.5px] font-medium text-body transition-colors duration-150 ease-out hover:text-ink">
+            className="ml-1 text-[13.5px] font-medium text-body transition-colors duration-150 ease-out hover:text-ink">
             
-            Precios
+            {t.header.pricing}
           </Link>
-          <Button to="/#demo">Contactar</Button>
+          <Button to="/#demo">{t.header.cta}</Button>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-hairline text-ink transition-colors duration-150 ease-out hover:border-ink/25 lg:hidden">
-          
-          {open ?
-          <XIcon className="h-5 w-5" aria-hidden="true" /> :
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? t.header.menuClose : t.header.menuOpen}
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-hairline text-ink transition-colors duration-150 ease-out hover:border-ink/30">
+            
+            {open ?
+            <XIcon className="h-5 w-5" aria-hidden="true" /> :
 
-          <MenuIcon className="h-5 w-5" aria-hidden="true" />
-          }
-        </button>
+            <MenuIcon className="h-5 w-5" aria-hidden="true" />
+            }
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -90,7 +96,7 @@ export function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
             onClick={() => setOpen(false)}
-            className="fixed inset-x-0 bottom-0 top-[72px] z-40 bg-ink/40 lg:hidden"
+            className="fixed inset-x-0 bottom-0 top-[72px] z-40 bg-[#0B0B0B]/50 lg:hidden"
             aria-hidden="true" />
           
             <motion.div
@@ -103,7 +109,7 @@ export function Header() {
             className="absolute inset-x-0 top-full z-50 max-h-[calc(100vh-72px)] overflow-y-auto border-b border-hairline bg-surface px-6 pb-8 pt-4 shadow-card lg:hidden">
             
               <nav aria-label="Mobile" className="flex flex-col">
-                {navLinks.map((link) =>
+                {t.nav.map((link) =>
               <Link
                 key={link.label}
                 to={link.to}
@@ -120,7 +126,7 @@ export function Header() {
 
               <div className="mt-7 flex flex-col gap-3">
                 <Button to="/#demo" size="md" className="w-full">
-                  Contactar
+                  {t.header.cta}
                 </Button>
                 <Button
                 to="/#pricing"
@@ -128,12 +134,26 @@ export function Header() {
                 size="md"
                 className="w-full">
                 
-                  Precios
+                  {t.header.pricing}
                 </Button>
               </div>
 
+              <div className="mt-7 flex items-center justify-between gap-4">
+                <span className="text-[12.5px] font-bold uppercase tracking-[0.06em] text-faint">
+                  {t.header.languageLabel}
+                </span>
+                <LanguageSelector variant="block" />
+              </div>
+
+              <div className="mt-4 flex items-center justify-between gap-4">
+                <span className="text-[12.5px] font-bold uppercase tracking-[0.06em] text-faint">
+                  {t.header.themeLabel}
+                </span>
+                <ThemeToggle variant="block" />
+              </div>
+
               <p className="mt-6 text-[13px] leading-relaxed text-subtle">
-                +500 creadores en la red · España y LATAM · activación en 48h.
+                {t.header.mobileNote}
               </p>
             </motion.div>
           </>

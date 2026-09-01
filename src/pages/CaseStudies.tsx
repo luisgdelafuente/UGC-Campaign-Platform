@@ -4,23 +4,21 @@ import { PageHero } from '../components/site/PageHero';
 import { Section } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
 import { VideoTile } from '../components/ui/VideoTile';
-import { caseStudyList } from '../data/content';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function CaseStudies() {
-  const [activeSlug, setActiveSlug] = useState(caseStudyList[0].slug);
+  const { t, clipById } = useLanguage();
+  const copy = t.casesPage;
+  const [activeSlug, setActiveSlug] = useState(t.caseStudies[0].slug);
   const study =
-  caseStudyList.find((item) => item.slug === activeSlug) ?? caseStudyList[0];
+  t.caseStudies.find((item) => item.slug === activeSlug) ?? t.caseStudies[0];
 
   return (
     <SiteLayout>
-      <PageHero
-        eyebrow="Casos"
-        title="Campañas medidas por lo que pasa fuera de la pantalla"
-        lede="Tres campañas gestionadas de principio a fin. En cada una verás el problema, lo que ejecutamos, el contenido que salió y los números que reportó el negocio.">
-        
+      <PageHero eyebrow={copy.eyebrow} title={copy.title} lede={copy.lede}>
         <div className="mt-7">
           <Button to="/#demo" size="md">
-            Cuéntanos tu negocio
+            {copy.cta}
           </Button>
         </div>
       </PageHero>
@@ -28,10 +26,10 @@ export function CaseStudies() {
       <Section className="pb-24 pt-12 lg:pb-28">
         <div
           role="tablist"
-          aria-label="Elegir un caso"
+          aria-label={copy.tablistLabel}
           className="flex flex-wrap gap-2 border-b border-hairline pb-6">
           
-          {caseStudyList.map((item) =>
+          {t.caseStudies.map((item) =>
           <button
             key={item.slug}
             role="tab"
@@ -39,16 +37,16 @@ export function CaseStudies() {
             aria-selected={item.slug === activeSlug}
             aria-controls={`case-panel-${item.slug}`}
             onClick={() => setActiveSlug(item.slug)}
-            className={`rounded-xl border px-4 py-2.5 text-left text-[13.5px] font-semibold transition-colors duration-150 ease-out ${
+            className={`rounded-full border px-4 py-2.5 text-left text-[13.5px] font-semibold transition-colors duration-150 ease-out ${
             item.slug === activeSlug ?
-            'border-ink bg-ink text-white' :
-            'border-hairline bg-surface text-body hover:border-ink/25 hover:text-ink'}`
+            'border-transparent bg-solid text-onSolid' :
+            'border-hairline bg-surface text-body hover:border-ink/30 hover:text-ink'}`
             }>
             
               {item.brand}
               <span
               className={`ml-2 font-normal ${
-              item.slug === activeSlug ? 'text-white/60' : 'text-faint'}`
+              item.slug === activeSlug ? 'text-onSolid/60' : 'text-faint'}`
               }>
               
                 {item.sector}
@@ -92,16 +90,16 @@ export function CaseStudies() {
             </div>
             <img
               src={study.cover}
-              alt={`Imagen de la campaña de ${study.brand}`}
+              alt={`${study.brand} — ${study.title}`}
               className="h-72 w-full rounded-3xl object-cover lg:h-full" />
             
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-10 border-t border-hairline pt-10 md:grid-cols-3">
             {[
-            { label: 'El problema', text: study.challenge },
-            { label: 'Lo que ejecutamos', text: study.approach },
-            { label: 'Dónde acabó', text: study.outcome }].
+            { label: copy.blocks.problem, text: study.challenge },
+            { label: copy.blocks.approach, text: study.approach },
+            { label: copy.blocks.outcome, text: study.outcome }].
             map((block) =>
             <div key={block.label}>
                 <h3 className="text-[11px] font-bold uppercase tracking-[0.08em] text-accent">
@@ -117,25 +115,25 @@ export function CaseStudies() {
           <div className="mt-16">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h3 className="text-[20px] font-bold tracking-[-0.02em] text-ink">
-                Contenido de esta campaña
+                {copy.clipsTitle}
               </h3>
-              <p className="text-[13px] text-subtle">
-                Vista previa sin sonido · toca para reproducir
-              </p>
+              <p className="text-[13px] text-subtle">{copy.clipsNote}</p>
             </div>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:max-w-3xl">
-              {study.clips.map((clip) =>
-              <VideoTile key={`${study.slug}-${clip.id}`} clip={clip} />
-              )}
+              {study.clipIds.map((id) => {
+                const clip = clipById(id);
+                if (!clip) return null;
+                return <VideoTile key={`${study.slug}-${id}`} clip={clip} />;
+              })}
             </div>
           </div>
 
-          <figure className="mt-16 rounded-3xl bg-ink p-10 lg:p-14">
-            <blockquote className="max-w-3xl text-[22px] font-medium leading-[1.45] tracking-[-0.01em] text-white">
+          <figure className="mt-16 rounded-3xl border border-hairline bg-inverse p-10 lg:p-14">
+            <blockquote className="max-w-3xl text-[22px] font-medium leading-[1.45] tracking-[-0.01em] text-onInverse">
               “{study.quote.text}”
             </blockquote>
-            <figcaption className="mt-8 text-[13.5px] text-white/60">
-              <span className="font-semibold text-white">
+            <figcaption className="mt-8 text-[13.5px] text-onInverse/60">
+              <span className="font-semibold text-onInverse">
                 {study.quote.name}
               </span>
               {' — '}

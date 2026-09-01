@@ -5,25 +5,27 @@ import { SiteLayout } from '../components/site/SiteLayout';
 import { Section } from '../components/ui/Section';
 import { Button } from '../components/ui/Button';
 import { VideoTile } from '../components/ui/VideoTile';
-import { blogPosts } from '../data/content';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function BlogPost() {
   const { slug } = useParams<{slug: string;}>();
-  const post = blogPosts.find((item) => item.slug === slug);
+  const { t, clipById } = useLanguage();
+  const copy = t.postPage;
+  const post = t.posts.find((item) => item.slug === slug);
 
   if (!post) {
     return (
       <SiteLayout>
         <Section className="py-32 text-center">
           <h1 className="text-[28px] font-extrabold tracking-display text-ink">
-            Ese artículo ya no está aquí
+            {copy.notFoundTitle}
           </h1>
           <p className="mx-auto mt-4 max-w-md text-[15px] text-muted">
-            La pieza que buscas ya no está publicada en esta dirección.
+            {copy.notFoundText}
           </p>
           <div className="mt-8 flex justify-center">
             <Button to="/blog" size="md">
-              Volver al blog
+              {copy.notFoundCta}
             </Button>
           </div>
         </Section>
@@ -31,7 +33,8 @@ export function BlogPost() {
 
   }
 
-  const others = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2);
+  const clip = clipById(post.clipId);
+  const others = t.posts.filter((item) => item.slug !== post.slug).slice(0, 2);
 
   return (
     <SiteLayout>
@@ -42,7 +45,7 @@ export function BlogPost() {
             className="inline-flex items-center gap-2 text-[13px] font-semibold text-subtle transition-colors duration-150 ease-out hover:text-ink">
             
             <ArrowLeftIcon className="h-4 w-4" aria-hidden="true" />
-            Todos los artículos
+            {copy.back}
           </Link>
           <p className="mt-8 text-[12.5px] font-semibold text-accent">
             {post.category}
@@ -91,21 +94,20 @@ export function BlogPost() {
             </div>
 
             <aside className="lg:sticky lg:top-24 lg:self-start">
-              {post.clip &&
+              {clip &&
               <>
                   <h2 className="text-[11px] font-bold uppercase tracking-[0.08em] text-faint">
-                    Pieza de ejemplo
+                    {copy.exampleAsset}
                   </h2>
-                  <VideoTile clip={post.clip} className="mt-4" />
+                  <VideoTile clip={clip} className="mt-4" />
                 </>
               }
               <div className="mt-8 rounded-2xl border border-hairline bg-surface p-6">
                 <p className="text-[14.5px] leading-relaxed text-muted">
-                  ¿Quieres aplicarlo a tu próxima campaña? Te preparamos un plan
-                  a medida, gratis y sin compromiso.
+                  {copy.ctaText}
                 </p>
                 <Button to="/#demo" size="md" className="mt-5 w-full">
-                  Quiero mi plan
+                  {copy.ctaButton}
                 </Button>
               </div>
             </aside>
@@ -115,7 +117,7 @@ export function BlogPost() {
 
       <Section className="border-t border-hairline bg-surface py-16">
         <h2 className="text-[13px] font-bold uppercase tracking-[0.08em] text-faint">
-          Seguir leyendo
+          {copy.keepReading}
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           {others.map((item) =>

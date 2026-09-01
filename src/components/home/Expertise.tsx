@@ -1,31 +1,30 @@
 import React from 'react';
 import { Section, Eyebrow } from '../ui/Section';
-import { expertiseStats, testimonials } from '../../data/site';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { IMAGES } from '../../data/media';
 
 export function Expertise() {
-  const lead = testimonials[0];
+  const { t } = useLanguage();
+  const copy = t.expertise;
+  const lead = t.testimonials[0];
 
   return (
     <Section id="expertise" labelledBy="expertise-heading" className="py-24 lg:py-28">
       <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-20">
         <div>
-          <Eyebrow>Experiencia</Eyebrow>
+          <Eyebrow>{copy.eyebrow}</Eyebrow>
           <h2
             id="expertise-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            Años activando creadores, convertidos en un sistema
+            {copy.heading}
           </h2>
           <p className="mt-5 max-w-xl text-[15.5px] leading-relaxed text-muted">
-            Empezamos gestionando campañas a mano para restaurantes y tiendas,
-            no montando un marketplace. Cada regla del sistema —cómo se escribe
-            un brief, cómo se cierran los derechos, cómo se puntúa a un
-            creador— viene de campañas que ejecutamos nosotros. Sigue habiendo
-            una persona responsable en cada cuenta.
+            {copy.body}
           </p>
 
           <dl className="mt-12 grid grid-cols-2 gap-y-8 border-t border-hairline pt-8">
-            {expertiseStats.map((stat) =>
+            {t.stats.map((stat) =>
             <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
@@ -43,8 +42,8 @@ export function Expertise() {
 
         <div className="flex flex-col gap-6">
           <img
-            src="/42795ad1-1fdc-4881-9b55-499d3f4d4c9a.jpg"
-            alt="El equipo revisando contenido de creadores en el estudio"
+            src={IMAGES.team}
+            alt={copy.imageAlt}
             className="h-72 w-full rounded-3xl object-cover" />
           
           <figure className="rounded-3xl border border-hairline bg-surface p-8 lg:p-10">

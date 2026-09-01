@@ -5,18 +5,17 @@ import { SiteLayout } from '../components/site/SiteLayout';
 import { PageHero } from '../components/site/PageHero';
 import { Section } from '../components/ui/Section';
 import { VideoTile } from '../components/ui/VideoTile';
-import { blogPosts } from '../data/content';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function Blog() {
-  const [featured, ...rest] = blogPosts;
+  const { t, clipById } = useLanguage();
+  const copy = t.blogPage;
+  const [featured, ...rest] = t.posts;
+  const featuredClip = clipById(featured.clipId);
 
   return (
     <SiteLayout>
-      <PageHero
-        eyebrow="Blog"
-        title="Lo que aprendemos campaña tras campaña"
-        lede="Criterio sobre creadores, sectores y medición, escrito por el equipo que ejecuta las campañas cada semana." />
-      
+      <PageHero eyebrow={copy.eyebrow} title={copy.title} lede={copy.lede} />
 
       <Section className="py-16 lg:py-20">
         <article className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
@@ -52,7 +51,7 @@ export function Blog() {
               to={`/blog/${featured.slug}`}
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
               
-              Leer el artículo
+              {copy.readLink}
               <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -63,9 +62,9 @@ export function Blog() {
               alt=""
               className="hidden h-72 flex-1 rounded-3xl object-cover sm:block" />
             
-            {featured.clip &&
+            {featuredClip &&
             <VideoTile
-              clip={featured.clip}
+              clip={featuredClip}
               className="w-40 shrink-0 sm:w-44"
               showMetric={false} />
 
@@ -76,7 +75,7 @@ export function Blog() {
 
       <Section className="border-t border-hairline bg-surface py-20">
         <h2 className="text-[13px] font-bold uppercase tracking-[0.08em] text-faint">
-          Más del equipo
+          {copy.moreTitle}
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           {rest.map((post) =>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { matchedCreators } from '../../data/site';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const resultBars = [
 { height: 40, on: false },
@@ -12,71 +12,75 @@ const resultBars = [
 
 
 export function ProductFrame() {
+  const { t } = useLanguage();
+  const frame = t.frame;
+
   return (
     <div
       className="relative h-[552px] w-full max-w-[470px]"
-      aria-label="Ejemplo de plan de campaña con creadores propuestos"
+      aria-label={frame.ariaLabel}
       role="img">
       
-      {/* Main app frame */}
       <div
-        className="mp-float-up absolute inset-0 overflow-hidden rounded-3xl border border-ink bg-ink shadow-frame"
+        className="mp-float-up absolute inset-0 overflow-hidden rounded-3xl border border-inverse bg-inverse shadow-frame"
         style={{ ['--mp-rot' as string]: 'rotate(1.1deg)', transform: 'rotate(1.1deg)' }}>
         
-        <div className="flex h-11 items-center justify-between border-b border-white/10 px-4">
-          <span className="text-[12.5px] font-semibold tracking-[-0.01em] text-white">
-            ✦ Tu plan de campaña
+        <div className="flex h-11 items-center justify-between border-b border-onInverse/10 px-4">
+          <span className="text-[12.5px] font-semibold tracking-[-0.01em] text-onInverse">
+            {frame.title}
           </span>
-          <span className="rounded-full bg-highlight px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em] text-ink">
-            Ejemplo
+          <span className="rounded-full bg-highlight px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.06em] text-[#0B0B0B]">
+            {frame.tag}
           </span>
         </div>
 
         <div className="flex flex-col gap-[18px] px-6 py-[22px]">
           <div>
             <span className="text-[10.5px] font-bold uppercase tracking-[0.05em] text-highlight">
-              ✦ Caso real · Restaurante Madrid
+              {frame.caseLabel}
             </span>
             <p className="mt-2 text-[10.5px] font-bold uppercase tracking-[0.05em] text-accent-bright">
-              El brief que nos dieron →
+              {frame.briefLabel}
             </p>
-            <p className="mt-2 text-[14.5px] leading-relaxed text-white/85">
-              «Soy un restaurante en Malasaña y quiero llenar mesas de martes a
-              jueves…»
+            <p className="mt-2 text-[14.5px] leading-relaxed text-onInverse/85">
+              {frame.briefQuote}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
-              <span className="rounded-full border border-white/15 px-2.5 py-[5px] text-[11.5px] font-semibold text-white/80">
-                Visitas 24K
-              </span>
-              <span className="rounded-full border border-white/15 px-2.5 py-[5px] text-[11.5px] font-semibold text-white/80">
-                Reservas/mes +120
-              </span>
-              <span className="rounded-full border border-accent-bright/40 bg-accent-bright/10 px-2.5 py-[5px] text-[11.5px] font-semibold text-accent-bright">
-                Coste 1.480 €
-              </span>
+              {frame.chips.map((chip, i) =>
+              <span
+                key={chip}
+                className={`rounded-full px-2.5 py-[5px] text-[11.5px] font-semibold ${
+                i === frame.chips.length - 1 ?
+                'border border-accent-bright/40 bg-accent-bright/10 text-accent-bright' :
+                'border border-onInverse/15 text-onInverse/80'}`
+                }>
+                
+                  {chip}
+                </span>
+              )}
             </div>
           </div>
 
-          <div className="h-px bg-white/10" />
+          <div className="h-px bg-onInverse/10" />
 
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[12.5px] font-bold text-white">
-                Creadores propuestos
+              <span className="text-[12.5px] font-bold text-onInverse">
+                {frame.creatorsTitle}
               </span>
               <span className="rounded-full bg-accent-bright/15 px-2 py-0.5 text-[10.5px] font-semibold text-accent-bright">
-                IA + equipo
+                {frame.creatorsTag}
               </span>
             </div>
 
             <ul className="flex flex-col">
-              {matchedCreators.map((creator, i) =>
+              {frame.creators.map((creator, i) =>
               <li
                 key={creator.name}
                 className={`flex items-center gap-3 py-[9px] ${
-                i === matchedCreators.length - 1 ?
+                i === frame.creators.length - 1 ?
                 '' :
-                'border-b border-white/10'}`
+                'border-b border-onInverse/10'}`
                 }>
                 
                   <span
@@ -85,22 +89,22 @@ export function ProductFrame() {
                   aria-hidden="true" />
                 
                   <span className="flex flex-1 flex-col">
-                    <span className="text-[12.5px] font-semibold text-white">
+                    <span className="text-[12.5px] font-semibold text-onInverse">
                       {creator.name}
                     </span>
-                    <span className="text-[11px] text-white/50">
+                    <span className="text-[11px] text-onInverse/50">
                       {creator.niche}
                     </span>
                   </span>
                   <span className="flex w-[70px] flex-col items-end gap-1">
-                    <span className="h-1 w-[70px] overflow-hidden rounded-sm bg-white/15">
+                    <span className="h-1 w-[70px] overflow-hidden rounded-sm bg-onInverse/15">
                       <span
                       className="mp-shimmer relative block h-full overflow-hidden rounded-sm bg-accent-bright"
                       style={{ width: `${creator.score}%` }} />
                     
                     </span>
                     <span className="text-[10.5px] font-bold text-accent-bright">
-                      {creator.score}% encaje
+                      {creator.score}% {frame.fitSuffix}
                     </span>
                   </span>
                 </li>
@@ -110,16 +114,16 @@ export function ProductFrame() {
         </div>
       </div>
 
-      {/* Activation card */}
       <div
         className="mp-float-down absolute -bottom-6 -left-6 w-[176px] rounded-2xl border border-hairline bg-surface p-4 shadow-card lg:-left-10"
         style={{ ['--mp-rot' as string]: 'rotate(-3deg)', transform: 'rotate(-3deg)' }}>
         
         <p className="text-[23px] font-extrabold tracking-[-0.02em] text-ink">
-          48<span className="text-accent">h</span>
+          {frame.activationValue}
+          <span className="text-accent">{frame.activationUnit}</span>
         </p>
         <p className="mt-0.5 text-[10.5px] font-medium text-subtle">
-          para activar la campaña
+          {frame.activationLabel}
         </p>
         <div className="mt-2 flex h-5 items-end gap-[3px]" aria-hidden="true">
           {resultBars.map((bar, i) =>
@@ -134,7 +138,6 @@ export function ProductFrame() {
         </div>
       </div>
 
-      {/* Network card */}
       <div
         className="mp-float-up absolute -right-4 -top-4 flex items-center gap-2 rounded-[14px] border border-hairline bg-surface px-3.5 py-2.5 shadow-chip lg:-right-6"
         style={{ ['--mp-rot' as string]: 'rotate(2deg)', transform: 'rotate(2deg)' }}>
@@ -144,17 +147,16 @@ export function ProductFrame() {
           <span
             key={tone}
             className="h-5 w-5 rounded-full border-2 border-surface"
-            style={{
-              backgroundColor: tone,
-              marginLeft: i === 0 ? 0 : -6
-            }} />
+            style={{ backgroundColor: tone, marginLeft: i === 0 ? 0 : -6 }} />
 
           )}
         </span>
         <span className="flex flex-col">
-          <span className="text-[12.5px] font-bold text-ink">+500</span>
+          <span className="text-[12.5px] font-bold text-ink">
+            {frame.networkValue}
+          </span>
           <span className="text-[10px] font-medium text-faint">
-            creadores en la red
+            {frame.networkLabel}
           </span>
         </span>
       </div>

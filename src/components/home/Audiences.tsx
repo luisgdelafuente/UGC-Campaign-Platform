@@ -2,36 +2,38 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRightIcon, CheckIcon } from 'lucide-react';
 import { Section, Eyebrow } from '../ui/Section';
-import { audiences, AudienceKey } from '../../data/site';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { Audience } from '../../types/content';
 
 export function Audiences() {
-  const [active, setActive] = useState<AudienceKey>('brands');
-  const audience = audiences.find((a) => a.key === active) ?? audiences[0];
+  const { t } = useLanguage();
+  const copy = t.audiencesSection;
+  const [active, setActive] = useState<Audience['key']>('brands');
+  const audience = copy.items.find((a) => a.key === active) ?? copy.items[0];
 
   return (
     <Section id="audiences" labelledBy="audiences-heading" className="py-24 lg:py-28">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>Una red, tres partes</Eyebrow>
+          <Eyebrow>{copy.eyebrow}</Eyebrow>
           <h2
             id="audiences-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            Marcas, agencias y creadores en el mismo sistema
+            {copy.heading}
           </h2>
         </div>
         <p className="max-w-md text-[15.5px] leading-relaxed text-muted">
-          Cada parte trabaja en su propio espacio, pero el brief, las revisiones
-          y los pagos ocurren sobre la misma información.
+          {copy.lede}
         </p>
       </div>
 
       <div
         role="tablist"
-        aria-label="Choose an audience"
-        className="mt-10 inline-flex rounded-xl border border-hairline bg-surface p-1">
+        aria-label={copy.tablistLabel}
+        className="mt-10 inline-flex rounded-full border border-hairline bg-surface p-1">
         
-        {audiences.map((item) =>
+        {copy.items.map((item) =>
         <button
           key={item.key}
           role="tab"
@@ -39,16 +41,14 @@ export function Audiences() {
           aria-selected={active === item.key}
           aria-controls={`panel-${item.key}`}
           onClick={() => setActive(item.key)}
-          className={`relative rounded-lg px-4 py-2 text-[13.5px] font-semibold transition-colors duration-150 ease-out ${
-          active === item.key ?
-          'text-white' :
-          'text-body hover:text-ink'}`
+          className={`relative rounded-full px-4 py-2 text-[13.5px] font-semibold transition-colors duration-150 ease-out ${
+          active === item.key ? 'text-onSolid' : 'text-body hover:text-ink'}`
           }>
           
             {active === item.key &&
           <motion.span
             layoutId="audience-pill"
-            className="absolute inset-0 rounded-lg bg-ink"
+            className="absolute inset-0 rounded-full bg-solid"
             transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }} />
 
           }
@@ -59,7 +59,7 @@ export function Audiences() {
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={audience.key}
+          key={`${audience.key}-${audience.tab}`}
           id={`panel-${audience.key}`}
           role="tabpanel"
           aria-labelledby={`tab-${audience.key}`}
@@ -79,10 +79,7 @@ export function Audiences() {
             <ul className="mt-8 grid gap-6 sm:grid-cols-3">
               {audience.bullets.map((bullet) =>
               <li key={bullet.title} className="flex flex-col">
-                  <CheckIcon
-                  className="h-4 w-4 text-accent"
-                  aria-hidden="true" />
-                
+                  <CheckIcon className="h-4 w-4 text-accent" aria-hidden="true" />
                   <span className="mt-3 text-sm font-semibold text-ink">
                     {bullet.title}
                   </span>
@@ -103,7 +100,7 @@ export function Audiences() {
 
           <div className="flex flex-col justify-between bg-wash p-8 lg:p-10">
             <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-faint">
-              Lo que cambia
+              {copy.whatChanges}
             </p>
             <div className="mt-10">
               <p className="text-[44px] font-extrabold leading-none tracking-display text-ink">

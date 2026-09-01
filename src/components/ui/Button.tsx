@@ -19,11 +19,11 @@ const base =
 'inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-[-0.01em] whitespace-nowrap transition-[background-color,color,border-color,box-shadow,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-canvas active:translate-y-px';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-ink text-white shadow-accent hover:bg-[#232320]',
+  primary: 'bg-solid text-onSolid shadow-accent hover:bg-solid-hover',
   secondary:
   'bg-surface text-ink border border-hairline hover:border-ink/30 hover:bg-wash',
   ghost: 'text-body hover:text-ink',
-  accent: 'bg-accent-bright text-ink hover:bg-accent-500'
+  accent: 'bg-accent-bright text-[#0B0B0B] hover:bg-accent-500'
 };
 
 const sizes: Record<Size, string> = {

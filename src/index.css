@@ -8,13 +8,86 @@
 
 /* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
+:root {
+  --canvas: 251 250 248;
+  --surface: 255 255 255;
+  --raised: 250 249 246;
+  --ink: 11 11 11;
+  --body: 63 61 58;
+  --muted: 87 84 79;
+  --subtle: 122 118 113;
+  --faint: 168 163 156;
+  --hairline: 230 227 222;
+  --hairline-soft: 239 237 232;
+  --wash: 246 244 240;
+  /* Solid actions and selected states */
+  --solid: 11 11 11;
+  --solid-hover: 35 35 32;
+  --on-solid: 255 255 255;
+  /* High-contrast panels */
+  --inverse: 11 11 11;
+  --on-inverse: 255 255 255;
+  --accent: 10 127 166;
+  --accent-bright: 79 195 232;
+  --accent-soft: 232 246 251;
+  --accent-border: 199 233 245;
+  --accent-300: 127 214 240;
+  --accent-400: 79 195 232;
+  --accent-500: 38 169 216;
+  --highlight: 245 197 24;
+  --positive: 22 163 74;
+  --shadow-strength: 0.2;
+}
+.dark {
+  --canvas: 12 12 14;
+  --surface: 22 22 25;
+  --raised: 28 28 32;
+  --ink: 244 243 241;
+  --body: 213 210 205;
+  --muted: 177 173 167;
+  --subtle: 148 144 138;
+  --faint: 116 112 107;
+  --hairline: 44 44 49;
+  --hairline-soft: 34 34 38;
+  --wash: 28 28 32;
+  --solid: 242 241 238;
+  --solid-hover: 255 255 255;
+  --on-solid: 11 11 11;
+  --inverse: 26 26 30;
+  --on-inverse: 245 244 242;
+  /* Aqua reads far better than the light-mode blue on near-black */
+  --accent: 87 221 232;
+  --accent-bright: 87 221 232;
+  --accent-soft: 18 46 50;
+  --accent-border: 32 78 84;
+  --accent-300: 141 236 244;
+  --accent-400: 87 221 232;
+  --accent-500: 52 198 214;
+  --highlight: 255 213 74;
+  --positive: 74 222 128;
+  --shadow-strength: 0.55;
+}
 html {
   scroll-behavior: smooth;
+  /* Sticky header height plus breathing room, so anchored sections never
+     land underneath the header. */
+  scroll-padding-top: 88px;
+  /* Paint the canvas on the root element too: the overscroll / rubber-band
+     area above the header reads the root background, not the body's. */
+  background-color: rgb(var(--canvas));
+  overscroll-behavior-y: none;
 }
 body {
-  background-color: #fafaf9;
-  color: #0b0b0f;
+  background-color: rgb(var(--canvas));
+  color: rgb(var(--ink));
   -webkit-font-smoothing: antialiased;
+  transition: background-color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+/* scrollIntoView honours the target's scroll-margin rather than the
+   scrollport's padding in some engines, so anchor targets carry it too. */
+section[id],
+div[id] {
+  scroll-margin-top: 88px;
 }
 @keyframes mp-float-up {
   0%,

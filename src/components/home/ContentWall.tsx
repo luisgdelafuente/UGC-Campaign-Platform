@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from 'lucide-react';
 import { Section, Eyebrow } from '../ui/Section';
 import { VideoTile } from '../ui/VideoTile';
-import { ugcClips } from '../../data/content';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function ContentWall() {
+  const { t } = useLanguage();
+  const copy = t.contentWall;
+
   return (
     <Section
       id="content"
@@ -14,22 +17,21 @@ export function ContentWall() {
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>Contenido de la red</Eyebrow>
+          <Eyebrow>{copy.eyebrow}</Eyebrow>
           <h2
             id="content-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            El trabajo real, y lo que pasó fuera de la pantalla
+            {copy.heading}
           </h2>
         </div>
         <p className="max-w-sm text-[14.5px] leading-relaxed text-muted">
-          Una muestra de piezas producidas este mes. El dato de cada clip es el
-          que reportó el negocio, no una métrica de vanidad.
+          {copy.lede}
         </p>
       </div>
 
       <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-        {ugcClips.map((clip, i) =>
+        {t.clips.map((clip, i) =>
         <VideoTile
           key={clip.id}
           clip={clip}
@@ -40,14 +42,14 @@ export function ContentWall() {
 
       <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-hairline pt-8">
         <p className="text-[14.5px] text-muted">
-          <strong className="font-bold text-ink">+200 campañas</strong>{' '}
-          producidas en España y LATAM desde 2019.
+          <strong className="font-bold text-ink">{copy.footNoteStrong}</strong>{' '}
+          {copy.footNote}
         </p>
         <Link
           to="/case-studies"
           className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
           
-          Ver las campañas detrás
+          {copy.link}
           <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>

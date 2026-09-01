@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { Section, Eyebrow } from '../ui/Section';
-import { caseStudies } from '../../data/site';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function CaseStudies() {
-  const { featured, supporting } = caseStudies;
+  const { t } = useLanguage();
+  const copy = t.casesSection;
+  const [featured, ...supporting] = t.caseStudies;
 
   return (
     <Section
@@ -15,27 +17,27 @@ export function CaseStudies() {
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>Casos</Eyebrow>
+          <Eyebrow>{copy.eyebrow}</Eyebrow>
           <h2
             id="cases-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            Campañas medidas por lo que pasa fuera de la pantalla
+            {copy.heading}
           </h2>
         </div>
         <Link
           to="/case-studies"
           className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
           
-          Ver todos los casos
+          {copy.link}
           <ArrowUpRightIcon className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
 
       <article className="mt-12 grid grid-cols-1 overflow-hidden rounded-3xl border border-hairline lg:grid-cols-2">
         <img
-          src={featured.image}
-          alt="Producto junto a un móvil reproduciendo contenido de creador"
+          src={featured.cover}
+          alt={copy.featuredImageAlt}
           className="h-64 w-full object-cover lg:h-full" />
         
         <div className="flex flex-col justify-between bg-canvas p-8 lg:p-12">
@@ -47,11 +49,11 @@ export function CaseStudies() {
               {featured.title}
             </h3>
             <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-muted">
-              {featured.text}
+              {featured.summary}
             </p>
           </div>
           <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-hairline pt-7">
-            {featured.stats.map((stat) =>
+            {featured.stats.slice(0, 3).map((stat) =>
             <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
@@ -71,7 +73,7 @@ export function CaseStudies() {
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
         {supporting.map((item) =>
         <Link
-          key={item.brand}
+          key={item.slug}
           to="/case-studies"
           className="group flex items-end justify-between gap-6 rounded-3xl border border-hairline bg-canvas p-8 transition-colors duration-150 ease-out hover:border-ink/20">
           
@@ -85,9 +87,11 @@ export function CaseStudies() {
             </div>
             <div className="shrink-0 text-right">
               <p className="text-[24px] font-extrabold tracking-[-0.02em] text-accent">
-                {item.stat}
+                {item.stats[1].value}
               </p>
-              <p className="mt-1 text-[12px] text-subtle">{item.statLabel}</p>
+              <p className="mt-1 text-[12px] text-subtle">
+                {item.stats[1].label}
+              </p>
             </div>
           </Link>
         )}

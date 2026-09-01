@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon } from 'lucide-react';
 import { Section, Eyebrow } from '../ui/Section';
-import { blogPosts } from '../../data/content';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export function BlogTeaser() {
+  const { t } = useLanguage();
+  const copy = t.blogTeaser;
+
   return (
     <Section
       id="blog"
@@ -13,25 +16,25 @@ export function BlogTeaser() {
       
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <Eyebrow>Últimas noticias</Eyebrow>
+          <Eyebrow>{copy.eyebrow}</Eyebrow>
           <h2
             id="blog-heading"
             className="mt-3 text-[32px] font-extrabold leading-[1.1] tracking-display text-ink sm:text-[40px]">
             
-            Lo último que hemos publicado
+            {copy.heading}
           </h2>
         </div>
         <Link
           to="/blog"
           className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors duration-150 ease-out hover:text-ink">
           
-          Ver todo el blog
+          {copy.link}
           <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-        {blogPosts.map((post) =>
+        {t.posts.map((post) =>
         <article key={post.slug} className="flex flex-col">
             <Link to={`/blog/${post.slug}`} className="group block">
               <img
