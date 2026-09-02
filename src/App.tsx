@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -8,6 +7,7 @@ import { About } from './pages/About';
 import { CaseStudies } from './pages/CaseStudies';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { NotFound } from './pages/NotFound';
 
 interface AppProps {
   language?: 'en' | 'es';
@@ -38,6 +38,7 @@ export function App({
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </LanguageProvider>

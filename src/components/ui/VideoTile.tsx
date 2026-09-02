@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { PlayIcon, PauseIcon } from 'lucide-react';
 import { UgcClip } from '../../types/content';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -18,11 +18,11 @@ export function VideoTile({ clip, className = '', showMetric = true }: VideoTile
     const video = videoRef.current;
     if (!video) return;
     if (video.paused) {
-      void video.play();
-      setPlaying(true);
+      // play() rejects when the clip fails to load or autoplay policy blocks
+      // it; without the catch the button would be stuck showing "pause".
+      void video.play().catch(() => setPlaying(false));
     } else {
       video.pause();
-      setPlaying(false);
     }
   };
 
@@ -38,6 +38,9 @@ export function VideoTile({ clip, className = '', showMetric = true }: VideoTile
         loop
         playsInline
         preload="none"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onEnded={() => setPlaying(false)}
         className="h-full w-full object-cover" />
       
 

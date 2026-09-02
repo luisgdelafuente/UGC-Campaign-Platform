@@ -69,9 +69,10 @@
 }
 html {
   scroll-behavior: smooth;
-  /* Sticky header height plus breathing room, so anchored sections never
-     land underneath the header. */
-  scroll-padding-top: 88px;
+  /* The anchor offset lives on the targets themselves (scroll-margin-top
+     below). Setting scroll-padding-top here as well would stack with it and
+     drop every anchor 88px too low. */
+  scroll-padding-top: 0;
   /* Paint the canvas on the root element too: the overscroll / rubber-band
      area above the header reads the root background, not the body's. */
   background-color: rgb(var(--canvas));
@@ -83,8 +84,9 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-/* scrollIntoView honours the target's scroll-margin rather than the
-   scrollport's padding in some engines, so anchor targets carry it too. */
+/* Sticky header height (73px) plus breathing room, so anchored sections
+   never land underneath the header. Honoured both by scrollIntoView and by
+   the browser's own fragment navigation on load. */
 section[id],
 div[id] {
   scroll-margin-top: 88px;

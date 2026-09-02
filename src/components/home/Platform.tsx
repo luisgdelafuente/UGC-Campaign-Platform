@@ -1,4 +1,3 @@
-import React from 'react';
 import { CpuIcon, ShieldCheckIcon, BarChart3Icon, CheckIcon } from 'lucide-react';
 import { Section, Eyebrow } from '../ui/Section';
 import { useLanguage } from '../../contexts/LanguageContext';

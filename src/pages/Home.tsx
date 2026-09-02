@@ -1,4 +1,3 @@
-import React from 'react';
 import { SiteLayout } from '../components/site/SiteLayout';
 import { Hero } from '../components/home/Hero';
 import { LogoStrip } from '../components/home/LogoStrip';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Section, Eyebrow } from '../ui/Section';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { IMAGES } from '../../data/media';

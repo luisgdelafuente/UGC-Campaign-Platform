@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SiteLayout } from '../components/site/SiteLayout';
 import { PageHero } from '../components/site/PageHero';
 import { Section } from '../components/ui/Section';

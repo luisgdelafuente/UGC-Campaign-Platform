@@ -1,0 +1,3 @@
+# Mirrors the SPA rewrite in netlify.toml so the rule also ships inside
+# dist/ for manual (drag-and-drop) deploys, where netlify.toml is not read.
+/*  /index.html  200

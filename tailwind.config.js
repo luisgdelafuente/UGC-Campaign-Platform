@@ -1,30 +1,45 @@
-export default {content: [
-  './index.html',
-  './src/**/*.{js,ts,jsx,tsx}'
-],
+/** Every colour is driven by the CSS custom properties declared in
+ *  src/index.css (`:root` for light, `.dark` for dark). Using the
+ *  `rgb(var(--token) / <alpha-value>)` form keeps Tailwind's opacity
+ *  modifiers (`text-onInverse/70`) working while letting the theme swap
+ *  with a single class on <html>. */
+const token = (name) => `rgb(var(--${name}) / <alpha-value>)`
+
+export default {
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        canvas: '#FAFAF9',
-        surface: '#FFFFFF',
-        raised: '#FCFCFB',
-        ink: '#0B0B0F',
-        body: '#44403C',
-        muted: '#57534E',
-        subtle: '#78716C',
-        faint: '#A8A29E',
-        hairline: '#E7E5E4',
-        hairlineSoft: '#EFEDEB',
-        wash: '#F7F6F5',
-        accent: {
-          DEFAULT: '#5B2BFF',
-          soft: '#F3EFFF',
-          border: '#EAE1FF',
-          300: '#C4B5FD',
-          400: '#A78BFA',
-          500: '#8B5CF6',
+        canvas: token('canvas'),
+        surface: token('surface'),
+        raised: token('raised'),
+        ink: token('ink'),
+        body: token('body'),
+        muted: token('muted'),
+        subtle: token('subtle'),
+        faint: token('faint'),
+        hairline: token('hairline'),
+        hairlineSoft: token('hairline-soft'),
+        wash: token('wash'),
+        solid: {
+          DEFAULT: token('solid'),
+          hover: token('solid-hover'),
         },
-        positive: '#16A34A',
+        onSolid: token('on-solid'),
+        inverse: token('inverse'),
+        onInverse: token('on-inverse'),
+        accent: {
+          DEFAULT: token('accent'),
+          bright: token('accent-bright'),
+          soft: token('accent-soft'),
+          border: token('accent-border'),
+          300: token('accent-300'),
+          400: token('accent-400'),
+          500: token('accent-500'),
+        },
+        highlight: token('highlight'),
+        positive: token('positive'),
       },
       fontFamily: {
         sans: [
@@ -47,11 +62,11 @@ export default {content: [
       },
       boxShadow: {
         frame:
-          '0 1px 2px rgba(11,11,15,0.04), 0 34px 64px -20px rgba(11,11,15,0.20)',
-        card: '0 22px 44px -14px rgba(11,11,15,0.18)',
-        chip: '0 18px 36px -12px rgba(11,11,15,0.16)',
+          '0 1px 2px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.2)), 0 34px 64px -20px rgba(0, 0, 0, var(--shadow-strength))',
+        card: '0 22px 44px -14px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.9))',
+        chip: '0 18px 36px -12px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.8))',
         accent:
-          '0 1px 2px rgba(11,11,15,0.04), 0 6px 16px rgba(91,43,255,0.18)',
+          '0 1px 2px rgba(0, 0, 0, calc(var(--shadow-strength) * 0.2)), 0 6px 16px rgb(var(--accent) / 0.18)',
       },
       transitionTimingFunction: {
         out: 'cubic-bezier(0.23, 1, 0.32, 1)',

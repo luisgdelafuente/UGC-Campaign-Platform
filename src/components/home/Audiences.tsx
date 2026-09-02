@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRightIcon, CheckIcon } from 'lucide-react';
 import { Section, Eyebrow } from '../ui/Section';

@@ -718,6 +718,14 @@ export const en = {
     notFoundText: 'The piece you are looking for is not published at this address.',
     notFoundCta: 'Back to the blog'
   },
+  notFoundPage: {
+    eyebrow: 'Error 404',
+    title: 'This page does not exist',
+    text:
+    'The address you opened is not part of the site. It may have been moved, or the link that brought you here is out of date.',
+    homeCta: 'Back to home',
+    blogCta: 'Read the blog'
+  },
   videoTile: { play: 'Play', pause: 'Pause', from: 'the video from' },
   clips,
   caseStudies,

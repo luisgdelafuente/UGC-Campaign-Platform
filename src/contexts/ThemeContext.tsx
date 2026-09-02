@@ -1,5 +1,7 @@
-import React, {
+import type { ReactNode } from 'react';
+import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -7,6 +9,8 @@ import React, {
 'react';
 
 export type Theme = 'light' | 'dark';
+
+const STORAGE_KEY = 'ugc-theme';
 
 interface ThemeContextValue {
   theme: Theme;
@@ -16,34 +20,52 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
+/** localStorage throws in private-mode Safari and inside sandboxed frames,
+ *  so every access is guarded and simply falls back to the default. */
+function readStoredTheme(): Theme | null {
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    return stored === 'light' || stored === 'dark' ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
 interface ThemeProviderProps {
   initialTheme?: Theme;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function ThemeProvider({
   initialTheme = 'dark',
   children
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(initialTheme);
+  const [theme, setThemeState] = useState<Theme>(
+    () => readStoredTheme() ?? initialTheme
+  );
+
+  const setTheme = useCallback((next: Theme) => {
+    setThemeState(next);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      /* preference just does not survive the refresh */
+    }
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle('dark', theme === 'dark');
     root.style.colorScheme = theme;
-    return () => {
-      root.classList.remove('dark');
-      root.style.colorScheme = '';
-    };
   }, [theme]);
 
   const value = useMemo(
     () => ({
       theme,
       setTheme,
-      toggleTheme: () => setTheme((t) => t === 'dark' ? 'light' : 'dark')
+      toggleTheme: () => setTheme(theme === 'dark' ? 'light' : 'dark')
     }),
-    [theme]
+    [theme, setTheme]
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

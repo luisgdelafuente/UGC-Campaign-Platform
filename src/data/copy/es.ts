@@ -719,6 +719,14 @@ export const es: SiteCopy = {
     notFoundText: 'La pieza que buscas no está publicada en esta dirección.',
     notFoundCta: 'Volver al blog'
   },
+  notFoundPage: {
+    eyebrow: 'Error 404',
+    title: 'Esta página no existe',
+    text:
+    'La dirección que has abierto no forma parte del sitio. Puede que se haya movido o que el enlace que te ha traído esté desactualizado.',
+    homeCta: 'Volver al inicio',
+    blogCta: 'Leer el blog'
+  },
   videoTile: { play: 'Reproducir', pause: 'Pausar', from: 'el vídeo de' },
   clips,
   caseStudies,
